@@ -1,9 +1,11 @@
-﻿using System;
+﻿//outcommented, intended functionallity added to program.cs
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Spotiflix;
+
 namespace Spotiflix
 {
     internal class Menu
@@ -12,8 +14,9 @@ namespace Spotiflix
         public List<string> SpecMenu(char input)
         {
             FileHandler fileHandler = new();
+            List<List<string>> list = new();
+            string result;
             bool check;
-            List<string> list = new();
             do
             {
                 check = true;
@@ -50,6 +53,7 @@ namespace Spotiflix
                         break;
                     case '4':
                         //Kald OtherMenu
+                        return result = Menu.OtherMenu(input);
                         break;
                     default:
                         Console.Write("Invalid input, please pick a valid input from the menu" +
@@ -64,6 +68,7 @@ namespace Spotiflix
         public char OtherMenu(char input)
         {
             bool check;
+            string result.
 
             do
             {
@@ -80,6 +85,7 @@ namespace Spotiflix
                 {
                     check = true;
                     //Kald SpecSearch.
+                    return result = Menu.SpecSearch(input);
                 }
                 else
                 {
@@ -142,5 +148,23 @@ namespace Spotiflix
                 }
             } while (!check);
         }
+        public int FlexMenu(List<string> list)
+        {
+            Console.WriteLine("Menu:");
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine($"'{i + 1}' - {list[i]}");
+            }
+            bool looper;
+            while (true)
+            {
+                looper = int.TryParse(Console.ReadKey().KeyChar.ToString(), out int i);
+                if (looper && i <= list.Count)//maybe omit 0 / use as quit option
+                {
+                    return i;
+                }
+            }
+        }
     }
 }
+*/
