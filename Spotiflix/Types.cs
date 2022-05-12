@@ -11,11 +11,11 @@ namespace Spotiflix
     internal class Film
     {
         public string Title { get; set; }
-        public PlayTime Time { get; set; }
+        public int Time { get; set; }
         public string Genre { get; set; }
         public ReleaseDate Date { get; set; }
         public string Url { get; set; }
-        public Film(string title, PlayTime playTime, string genre, ReleaseDate releaseDate, string url)
+        public Film(string title, int playTime, string genre, ReleaseDate releaseDate, string url)
         {
             Title = title;
             Time = playTime;
@@ -28,12 +28,12 @@ namespace Spotiflix
     {
         public string Title { get; set; }
         public string Artist { get; set; }
-        public PlayTime Time { get; set; }
+        public int Time { get; set; }
         public string Genre { get; set; }
         public string Album { get; set; }
         public ReleaseDate Date { get; set; }
         public string Url { get; set; }
-        public Song(string title, string artist, PlayTime playTime, string genre, string album, ReleaseDate releaseDate, string url)
+        public Song(string title, string artist, int playTime, string genre, string album, ReleaseDate releaseDate, string url)
         {
             Title = title;
             Artist = artist;
@@ -48,11 +48,11 @@ namespace Spotiflix
     {
         public string Title { get; set; }
         public EpInfo Info { get; set; }
-        public PlayTime Time { get; set; }
+        public int Time { get; set; }
         public string Genre { get; set; }
         public ReleaseDate Date { get; set; }
         public string Url { get; set; }
-        public Series(string title, EpInfo epinfo, PlayTime playTime, string genre, ReleaseDate releaseDate, string url)
+        public Series(string title, EpInfo epinfo, int playTime, string genre, ReleaseDate releaseDate, string url)
         {
             Title = title;
             Info = epinfo;
@@ -72,16 +72,6 @@ namespace Spotiflix
             EpName = epname;
             EpNumber = epnumber;
             Season = season;
-        }
-    }
-    internal class PlayTime
-    {
-        public int Unit1 { get; set; }
-        public int Unit2 { get; set; }
-        public PlayTime(int unit1, int unit2)
-        {
-            Unit1 = unit1;
-            Unit2 = unit2;
         }
     }
     internal class ReleaseDate

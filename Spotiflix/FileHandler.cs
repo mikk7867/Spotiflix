@@ -27,17 +27,14 @@ namespace Spotiflix
             //variables
             List<Film> film = new();
             Film temp;
-            PlayTime playTime;
             ReleaseDate releaseDate;
-            //for each full film (8 items) in the string list
-            for (int i = 0; i < (items.Count / 8); i++)
+            //for each full film (7 items) in the string list
+            for (int i = 0; i < (items.Count / 7); i++)
             {
-                //playtime set to the appropriate items converted to int
-                playTime = new(int.Parse(items[(i * 8) + 1]), int.Parse(items[(i * 8) + 2]));
                 //releasedate set to the appropriate items converted to int
-                releaseDate = new(int.Parse(items[(i * 8) + 4]), int.Parse(items[(i * 8) + 5]), int.Parse(items[(i * 8) + 6]));
-                //temporary film set to the appropriate items, including the playtime and releasedate
-                temp = new(items[i * 8], playTime, items[(i * 8) + 3], releaseDate, items[(i * 8) + 7]);
+                releaseDate = new(int.Parse(items[(i * 7) + 3]), int.Parse(items[(i * 7) + 4]), int.Parse(items[(i * 7) + 5]));
+                //temporary film set to the appropriate items, including the releasedate
+                temp = new(items[i * 7], int.Parse(items[(i * 7) + 1]), items[(i * 7) + 2], releaseDate, items[(i * 7) + 6]);
                 //temporary film is added to list
                 film.Add(temp);
             }
@@ -51,17 +48,14 @@ namespace Spotiflix
             //variables
             List<Song> song = new();
             Song temp;
-            PlayTime playTime;
             ReleaseDate releaseDate;
-            //for each full song (10 items) in the string list
-            for (int i = 0; i < (items.Count / 10); i++)
+            //for each full song (9 items) in the string list
+            for (int i = 0; i < (items.Count / 9); i++)
             {
-                //playtime set to the appropriate items converted to int
-                playTime = new(int.Parse(items[(i * 10) + 2]), int.Parse(items[(i * 10) + 3]));
                 //releasedate set to the appropriate items converted to int
-                releaseDate = new(int.Parse(items[(i * 10) + 6]), int.Parse(items[(i * 10) + 7]), int.Parse(items[(i * 10) + 8]));
-                //temporary song set to the appropriate items, including the playtime and releasedate
-                temp = new(items[i * 10], items[(i * 10) + 1], playTime, items[(i * 10) + 4], items[(i * 10) + 5], releaseDate, items[(i * 10) + 9]);
+                releaseDate = new(int.Parse(items[(i * 9) + 5]), int.Parse(items[(i * 9) + 6]), int.Parse(items[(i * 9) + 7]));
+                //temporary song set to the appropriate items, including the releasedate
+                temp = new(items[i * 9], items[(i * 9) + 1], int.Parse(items[(i * 9) + 2]), items[(i * 9) + 3], items[(i * 9) + 4], releaseDate, items[(i * 9) + 8]);
                 //temporary song is added to list
                 song.Add(temp);
             }
@@ -76,19 +70,16 @@ namespace Spotiflix
             List<Series> series = new();
             Series temp;
             EpInfo epInfo;
-            PlayTime playTime;
             ReleaseDate releaseDate;
-            //for each full series (11 items) in the string list
-            for (int i = 0; i < (items.Count / 11); i++)
+            //for each full series (10 items) in the string list
+            for (int i = 0; i < (items.Count / 10); i++)
             {
                 //epinfo set to the appropriate items, converted to int if applicable
-                epInfo = new(items[(i * 11) + 1], int.Parse(items[(i * 11) + 2]), int.Parse(items[(i * 11) + 3]));
-                //playtime set to the appropriate items converted to int
-                playTime = new(int.Parse(items[(i * 11) + 4]), int.Parse(items[(i * 11) + 5]));
+                epInfo = new(items[(i * 10) + 1], int.Parse(items[(i * 10) + 2]), int.Parse(items[(i * 10) + 3]));
                 //releasedate set to the appropriate items converted to int
-                releaseDate = new(int.Parse(items[(i * 11) + 7]), int.Parse(items[(i * 11) + 8]), int.Parse(items[(i * 11) + 9]));
+                releaseDate = new(int.Parse(items[(i * 10) + 6]), int.Parse(items[(i * 10) + 7]), int.Parse(items[(i * 10) + 8]));
                 //temporary song set to the appropriate items, including theepinfo, playtime and releasedate
-                temp = new(items[i * 11], epInfo, playTime, items[(i * 11) + 6], releaseDate, items[(i * 11) + 10]);
+                temp = new(items[i * 10], epInfo, int.Parse(items[(i * 10) + 4]), items[(i * 10) + 5], releaseDate, items[(i * 10) + 9]);
                 //temporary series is added to list
                 series.Add(temp);
             }
@@ -100,7 +91,7 @@ namespace Spotiflix
             //the entire file is copied into the string
             string s = File.ReadAllText(url);
             //the string is split up at underscores, and then returned
-            return s.Split('_').ToList();
+            return s.Split('§').ToList();
         }
     }
 }
