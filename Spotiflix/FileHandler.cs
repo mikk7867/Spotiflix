@@ -1,5 +1,4 @@
-﻿
-//methods for anything and everything file-related
+﻿//methods for anything and everything file-related
 
 namespace Spotiflix
 {
@@ -78,7 +77,7 @@ namespace Spotiflix
                 epInfo = new(items[(i * 10) + 1], int.Parse(items[(i * 10) + 2]), int.Parse(items[(i * 10) + 3]));
                 //releasedate set to the appropriate items converted to int
                 releaseDate = new(int.Parse(items[(i * 10) + 6]), int.Parse(items[(i * 10) + 7]), int.Parse(items[(i * 10) + 8]));
-                //temporary song set to the appropriate items, including theepinfo, playtime and releasedate
+                //temporary series set to the appropriate items, including the epinfo and releasedate
                 temp = new(items[i * 10], epInfo, int.Parse(items[(i * 10) + 4]), items[(i * 10) + 5], releaseDate, items[(i * 10) + 9]);
                 //temporary series is added to list
                 series.Add(temp);

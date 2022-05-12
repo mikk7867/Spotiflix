@@ -10,10 +10,11 @@ namespace Spotiflix
 {
     internal class SearchEngine
     {
+        //grants methods access to filehandler methods
         FileHandler fileHandler = new();
         public void FilmSearch(int choice)
         {
-            //get list of all films in database
+            //get list of all films in database + empty list to be used for printout
             List<Film> list = fileHandler.GetFilm(), 
                 print = new();
             //input variables
@@ -22,7 +23,7 @@ namespace Spotiflix
             //switch based on what the user wants to search for
             switch (choice)
             {
-                case 1:
+                case 1://all
                     print = list;
                     break;
                 case 2://title
@@ -97,12 +98,13 @@ namespace Spotiflix
                         $"URL: {film.Url}\n");
                 }
             }
+            //closing statement
             Console.WriteLine("Press any key to return to menu");
             Console.ReadKey();
         }
         public void SongSearch(int choice)
         {
-            //get list of all films in database
+            //get list of all songs in database + empty list to be used for printout
             List<Song> list = fileHandler.GetSong(),
                 print = new();
             //input variables
@@ -111,13 +113,13 @@ namespace Spotiflix
             //switch based on what the user wants to search for
             switch (choice)
             {
-                case 1:
+                case 1://all
                     print = list;
                     break;
                 case 2://title
                     //input method
                     in1 = StringInput();
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each song in the list, if it maches the input, add it to the to-be-printed-list
                     foreach (Song song in list)
                     {
                         if (song.Title.ToLower().Contains(in1))
@@ -139,7 +141,7 @@ namespace Spotiflix
                     }
                     //input method
                     in1 = GenreInput(genres);
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each song in the list, if it maches the input, add it to the to-be-printed-list
                     foreach (Song song in list)
                     {
                         if (song.Genre.ToLower() == in1)
@@ -151,7 +153,7 @@ namespace Spotiflix
                 case 4://release year
                     //input method
                     in2 = IntInput();
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each song in the list, if it maches the input, add it to the to-be-printed-list
                     foreach (Song song in list)
                     {
                         if (song.Date.Year == in2)
@@ -163,7 +165,7 @@ namespace Spotiflix
                 case 5://artist
                     //input method
                     in1 = StringInput();
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each song in the list, if it maches the input, add it to the to-be-printed-list
                     foreach (Song song in list)
                     {
                         if (song.Artist.ToLower().Contains(in1))
@@ -184,7 +186,7 @@ namespace Spotiflix
             {
                 //time for some variables
                 int minutes, seconds;
-                //print each film in the print list
+                //print each song in the print list
                 foreach (Song song in print)
                 {
                     //calculation of time units based on seconds
@@ -200,12 +202,13 @@ namespace Spotiflix
                         $"URL: {song.Url}\n");
                 }
             }
+            //closing statement
             Console.WriteLine("Press any key to return to menu");
             Console.ReadKey();
         }
         public void SeriesSearch(int choice)
         {
-            //get list of all films in database
+            //get list of all films in database + empty list to be used for printout
             List<Series> list = fileHandler.GetSeries(),
                 print = new();
             //input variables
@@ -214,13 +217,13 @@ namespace Spotiflix
             //switch based on what the user wants to search for
             switch (choice)
             {
-                case 1:
+                case 1://all
                     print = list;
                     break;
                 case 2://title
                     //input method
                     in1 = StringInput();
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each series in the list, if it maches the input, add it to the to-be-printed-list
                     foreach (Series series in list)
                     {
                         if (series.Title.ToLower().Contains(in1))
@@ -242,7 +245,7 @@ namespace Spotiflix
                     }
                     //input method
                     in1 = GenreInput(genres);
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each series in the list, if it maches the input, add it to the to-be-printed-list
                     foreach (Series series in list)
                     {
                         if (series.Genre.ToLower() == in1)
@@ -254,7 +257,7 @@ namespace Spotiflix
                 case 4://release year
                     //input method
                     in2 = IntInput();
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each series in the list, if it maches the input, add it to the to-be-printed-list
                     foreach (Series series in list)
                     {
                         if (series.Date.Year == in2)
@@ -275,7 +278,7 @@ namespace Spotiflix
             {
                 //time for some variables
                 int hours, minutes;
-                //print each film in the print list
+                //print each series in the print list
                 foreach (Series series in print)
                 {
                     //calculation of time units based on seconds
@@ -292,12 +295,13 @@ namespace Spotiflix
                         $"URL: {series.Url}\n");
                 }
             }
+            //closing statement
             Console.WriteLine("Press any key to return to menu");
             Console.ReadKey();
         }
         public void GlobalSearch(int choice)
         {
-            //get list of all films in database
+            //get list of all films, song and series in database + empty lists to be used for printout
             List<Film> filmlist = fileHandler.GetFilm(),
                 printfilm = new();
             List<Song> songlist = fileHandler.GetSong(),
@@ -310,7 +314,7 @@ namespace Spotiflix
             //switch based on what the user wants to search for
             switch (choice)
             {
-                case 1:
+                case 1://all
                     printfilm = filmlist;
                     printsong = songlist;
                     printseries = serieslist;
@@ -318,7 +322,7 @@ namespace Spotiflix
                 case 2://title
                     //input method
                     in1 = StringInput();
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each film, song and series in the lists, if it maches the input, add it to the to-be-printed-list
                     foreach (Film film in filmlist)
                     {
                         if (film.Title.ToLower().Contains(in1))
@@ -368,7 +372,7 @@ namespace Spotiflix
                     }
                     //input method
                     in1 = GenreInput(genres);
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each film, song and series in the lists, if it maches the input, add it to the to-be-printed-list
                     foreach (Film film in filmlist)
                     {
                         if (film.Genre.ToLower() == in1)
@@ -394,7 +398,7 @@ namespace Spotiflix
                 case 4://release year
                     //input method
                     in2 = IntInput();
-                    //for each film in the list, if it maches the input, add it to the to-be-printed-list
+                    //for each film, song and series in the lists, if it maches the input, add it to the to-be-printed-list
                     foreach (Film film in filmlist)
                     {
                         if (film.Date.Year == in2)
@@ -419,21 +423,22 @@ namespace Spotiflix
                     break;
             }
             Console.Clear();
-            //if print list is empty
+            //if print lists is empty
             if (!printfilm.Any() && !printsong.Any() && !printseries.Any())
             {
                 Console.WriteLine("Nothing matched your search");
             }
-            //if print list is NOT empty
+            //if print lists is NOT empty
             else
             {
                 //time for some variables
                 int hours, minutes, seconds;
-                //print each film in the print list
+                //header for films (if there are films that match the search)
                 if (printfilm.Any())
                 {
                     Console.WriteLine("Film:\n");
                 }
+                //print each film in the print list
                 foreach (Film film in printfilm)
                 {
                     //calculation of time units based on seconds
@@ -446,10 +451,12 @@ namespace Spotiflix
                         $"Release date: {film.Date.Day}/{film.Date.Month} {film.Date.Year}\n" +
                         $"URL: {film.Url}\n");
                 }
+                //header for songs (if there are songs that match the search)
                 if (printsong.Any())
                 {
                     Console.WriteLine("Music:\n");
                 }
+                //print each song in the print list
                 foreach (Song song in printsong)
                 {
                     //calculation of time units based on seconds
@@ -464,10 +471,12 @@ namespace Spotiflix
                         $"Release date: {song.Date.Day}/{song.Date.Month} {song.Date.Year}\n" +
                         $"URL: {song.Url}\n");
                 }
+                //header for series (if there are series that match the search)
                 if (printseries.Any())
                 {
                     Console.WriteLine("Series:\n");
                 }
+                //print each series in the print list
                 foreach (Series series in printseries)
                 {
                     //calculation of time units based on seconds
@@ -484,20 +493,26 @@ namespace Spotiflix
                         $"URL: {series.Url}\n");
                 }
             }
+            //closing statement
             Console.WriteLine("Press any key to return to menu");
             Console.ReadKey();
         }
         public string StringInput()
         {
+            //nullable to not crach if readline is empty
             string? input;
             Console.WriteLine("Enter search:");
+            //loops untill variable is returned
             while (true)
             {
+                //recieves input as string
                 input = Console.ReadLine();
+                //returns value only if not null
                 if(input != null)
                 {
                     return input.ToLower();
                 }
+                //if value is null => error message
                 else
                 {
                     Console.WriteLine("\nError. Try again");
@@ -508,13 +523,17 @@ namespace Spotiflix
         {
             bool looper;
             Console.WriteLine("Enter year:");
+            //loops untill variable is returned
             while (true)
             {
+                //recieves input as string, tryparsed to int
                 looper = int.TryParse(Console.ReadLine(), out int i);
+                //input is 4-digit number => return input
                 if (looper && i >= 1000 && i <= 9999)
                 {
                     return i;
                 }
+                //input is NOT 4-digit/number => error message
                 else
                 {
                     Console.WriteLine("Error. Try again");
@@ -524,18 +543,23 @@ namespace Spotiflix
         public string GenreInput(List<string> genres)
         {
             Console.WriteLine("Pick a genre:");
+            //list of genres taken from whichever list's method is used
             for (int i = 0; i < genres.Count; i++)
             {
                 Console.WriteLine($"'{i + 1}' - {genres[i]}");
             }
             bool looper;
+            //loops untill variable is returned
             while (true)
             {
+                //recieves input as string, tryparsed to int
                 looper = int.TryParse(Console.ReadKey().KeyChar.ToString(), out int i);
-                if (looper && i <= genres.Count && i != 0)//maybe omit 0 / use as quit option
+                //input is number and within elligeble numbers from list of genres => input returned
+                if (looper && i <= genres.Count && i != 0)
                 {
                     return genres[i - 1];
                 }
+                //input is either not an int or is not elligeble => error message
                 else
                 {
                     Console.Write("Invalid input, please pick a valid input from the menu" +
@@ -543,8 +567,6 @@ namespace Spotiflix
                     Console.ReadKey();
                 }
             }
-
-
         }
     }
 }
