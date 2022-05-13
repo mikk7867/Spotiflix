@@ -18,11 +18,7 @@ using System.Threading.Tasks;
         _name = value;
     }
 }
-whenever an object is created, the constructor (fx lines 36-43) determines the structure of the new object
- 
- 
- 
- 
+whenever an object is created, the constructor (fx lines 32-39) determines the structure of the new object
 */
 namespace Spotiflix
 {
