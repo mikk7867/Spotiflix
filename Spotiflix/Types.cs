@@ -3,12 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 //objects to be used by the rest of the program (film, music, series)
-
+//getter and setter transforms a field to a property
+/*
+{ get; set; }
+<==>
+{
+    get
+    {
+        return _name;
+    }
+    set
+    {
+        _name = value;
+    }
+}
+whenever an object is created, the constructor (fx lines 36-43) determines the structure of the new object
+ 
+ 
+ 
+ 
+*/
 namespace Spotiflix
 {
-    internal class Film
+    internal class Film//film object
     {
         public string Title { get; set; }
         public int Time { get; set; }
@@ -24,7 +42,7 @@ namespace Spotiflix
             Url = url;
         }
     }
-    internal class Song
+    internal class Song//songs object
     {
         public string Title { get; set; }
         public string Artist { get; set; }
@@ -44,7 +62,7 @@ namespace Spotiflix
             Url = url;
         }
     }
-    internal class Series
+    internal class Series//series/episode object
     {
         public string Title { get; set; }
         public EpInfo Info { get; set; }
@@ -62,7 +80,7 @@ namespace Spotiflix
             Url = url;
         }
     }
-    internal class EpInfo
+    internal class EpInfo//epinfo used in the series object
     {
         public string EpName { get; set; }
         public int EpNumber { get; set; }
@@ -74,7 +92,7 @@ namespace Spotiflix
             Season = season;
         }
     }
-    internal class ReleaseDate
+    internal class ReleaseDate//releasedate dd/mm/yyyy used in all three category objects
     {
         public int Day { get; set; }
         public int Month { get; set; }
